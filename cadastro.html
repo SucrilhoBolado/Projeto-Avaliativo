@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Cadastro de Usuário</h1>
+        <form method="post" action="processa_cadastro.php">
+            <div class="mb-3">
+                <label for="nome_completo" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" id="nome_completo" name="nome_completo" required>
+            </div>
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
+            </div>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo de Usuário</label>
+                <select class="form-select" id="tipo" name="tipo" required>
+                    <option value="Cliente">Cliente</option>
+                    <option value="Colaborador">Colaborador</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+
+        <div id="mensagem" class="alert alert-success mt-3" style="display: none;">
+            Cadastro realizado com sucesso!
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="window.location.href='login.html'">Login</button>
+    </div>
+
+    <script>
+        // Função para exibir a mensagem de sucesso e ocultar o formulário
+        function exibirMensagemDeSucesso() {
+            const mensagem = document.getElementById('mensagem');
+            const formulario = document.querySelector('form');
+            mensagem.style.display = 'block';
+            formulario.style.display = 'none';
+        }
+
+        // Verifica se a URL possui o parâmetro "sucesso" e, se sim, exibe a mensagem
+        const url = new URL(window.location.href);
+        if (url.searchParams.get('sucesso') === '1') {
+            exibirMensagemDeSucesso();
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
